@@ -23,7 +23,6 @@ const AddItem = async (req, res) => {
             response: response,
         });
     }
-
 }
 
 const deleteItem = async (req, res) => {
@@ -86,4 +85,18 @@ const updateItem = async (req, res) => {
     }
 }
 
-module.exports = { AddItem, deleteItem, updateItem }
+const getAllItem = async (req,res) => {
+    const allItem = await AddItemModel.find();
+
+    if(allItem){
+        res.status(200).json({
+            response: allItem
+        })
+    } else {
+        res.status(404).json({
+            msg: 'Item Not Found'
+        })
+    }
+}
+
+module.exports = { AddItem, deleteItem, updateItem, getAllItem }

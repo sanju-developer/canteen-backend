@@ -7,6 +7,9 @@ router.post('/addItem', ItemController.AddItem);
 router.post('/deleteItem',ItemController.deleteItem);
 
 router.post('/updateItem',ItemController.updateItem);
+
+router.get('/getAllItem',ItemController.getAllItem);
+
 router.get('/test', (req,res) => {
     res.send('holla ayush');
 })
