@@ -3,6 +3,7 @@ const body_parser = require('body-parser');
 const mongoose = require('mongoose');
 const db = require('./config/database/database');
 const CanteensRoute = require('./routes/route');
+var cors = require('cors');
 
 var port = 4000;
 var app = express();
@@ -17,6 +18,15 @@ if (process.env.MONGODB_URI) {
         if (db) { console.log('you are connected to Mongodb'); }
     });
 }
+
+//CORS
+app.use(function(req, res, next) {
+    res.header("access-control-allow-methods", "GET, POST, PUT, OPTIONS");
+    res.header("Content-Type", "application/json");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+  });
 
 // bodyparser middleware
 // to parse incoming data in JSON format
