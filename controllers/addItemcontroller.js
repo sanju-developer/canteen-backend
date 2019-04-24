@@ -53,7 +53,7 @@ const updateItem = async (req, res) => {
     const itemPresent = await AddItemModel.findOne({ _id: req.body.uniqueid });
 
     if (itemPresent) {
-        const response = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
+        // const response = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
         if(req.body.itemname){
             let resp = await AddItemModel.findOne({ itemname: req.body.itemname });
             if (resp && resp._id != req.body.uniqueid) {
