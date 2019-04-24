@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
-
     mobileno: { type: Number },
     rollno:  { type: Number },
     name:  { type: String },
