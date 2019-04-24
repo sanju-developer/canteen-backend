@@ -50,7 +50,6 @@ const deleteItem = async (req, res) => {
 
 const updateItem = async (req, res) => {
     const overAllResponse = [];
-    const InvalidUpdate = false;
     const itemPresent = await AddItemModel.findOne({ _id: req.body.uniqueid });
 
     if (itemPresent) {
@@ -58,22 +57,24 @@ const updateItem = async (req, res) => {
         if(req.body.itemname){
             let resp = await AddItemModel.findOne({ itemname: req.body.itemname });
             if (resp) {
-                InvalidUpdate = true;
+                res.status(200).json([{
+                    msg: "Can't Update Item already Exist."
+                }]);
             } else {
                 const response1 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
                 overAllResponse.push(response1);
             }
             
         }
-        if(req.body.qty){
+        if(req.body.qty>=0){
             const response2 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { qty: req.body.qty } });
             overAllResponse.push(response2);
         }
-        if(req.body.full){
+        if(req.body.full>=0){
             const response3 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { full: req.body.full } });
             overAllResponse.push(response3);
         } 
-        if(req.body.half){
+        if(req.body.half>=0){
             const response3 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { half: req.body.half } });
             overAllResponse.push(response3);
         } 
@@ -81,17 +82,10 @@ const updateItem = async (req, res) => {
             const response4 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { status: req.body.status } });
             overAllResponse.push(response4);
         }
-        if(!InvalidUpdate){
-            res.status(200).json([{
-                msg: 'Updated Successfully',
-                resp: overAllResponse
-            }])
-        }else{     
-            res.status(200).json([{
-                msg: "Can't Update Item already Exist."
-            }]);
-        }
-       
+        res.status(200).json([{
+            msg: 'Updated Successfully',
+            resp: overAllResponse
+        }])
     } else {
         res.status(404).json([{
             msg: 'Item Not Found'
