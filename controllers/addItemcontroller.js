@@ -74,14 +74,14 @@ const updateItem = async (req, res) => {
             const response4 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { status: req.body.status } });
             overAllResponse.push(response4);
         }
-        res.status(200).json({
+        res.status(200).json([{
             msg: 'Updated Successfully',
             resp: overAllResponse
-        })
+        }])
     } else {
-        res.status(404).json({
+        res.status(404).json([{
             msg: 'Item Not Found'
-        })
+        }])
     }
 }
 
