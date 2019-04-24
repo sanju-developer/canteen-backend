@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const AddItemController = require('../controllers/addItemcontroller');
-const OrderItemController = require('../controllers/orderItemController');
+const OrderItemController = require('../controllers/orderItemcontroller');
 
 router.post('/addItem', AddItemController.AddItem);
 
