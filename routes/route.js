@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const ItemController = require('../controllers/addItemcontroller');
+const AddItemController = require('../controllers/addItemcontroller');
+const OrderItemController = require('../controllers/orderItemController');
 
-router.post('/addItem', ItemController.AddItem);
+router.post('/addItem', AddItemController.AddItem);
 
-router.post('/deleteItem',ItemController.deleteItem);
+router.post('/deleteItem', AddItemController.deleteItem);
 
-router.post('/updateItem',ItemController.updateItem);
+router.post('/updateItem', AddItemController.updateItem);
 
-router.get('/getAllItem',ItemController.getAllItem);
+router.get('/getAllItem', AddItemController.getAllItem);
 
-router.get('/test', (req,res) => {
-    res.send('holla ayush');
-})
+router.post('/orderItem', OrderItemController.orderItem);
+
+router.post('/cancelOrderItem', OrderItemController.cancelOrderItem);
+
 
 module.exports = router;

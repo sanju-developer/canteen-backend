@@ -51,7 +51,7 @@ const deleteItem = async (req, res) => {
 const updateItem = async (req, res) => {
     const overAllResponse = [];
     const itemPresent = await AddItemModel.findOne({ _id: req.body.uniqueid });
-
+    console.log('------------------',itemPresent);
     if (itemPresent) {
         // const response = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
         if(req.body.itemname){
