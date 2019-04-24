@@ -6,7 +6,7 @@ router.post('/addItem', ItemController.AddItem);
 
 router.post('/deleteItem',ItemController.deleteItem);
 
-// router.post('/updateItem',ItemController.updateItem);
+router.post('/updateItem',ItemController.updateItem);
 
 router.get('/getAllItem',ItemController.getAllItem);
 
