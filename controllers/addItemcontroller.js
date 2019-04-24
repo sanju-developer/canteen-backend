@@ -13,15 +13,15 @@ const AddItem = async (req, res) => {
 
     let resp = await AddItemModel.findOne({ itemname: req.body.itemname });
     if (resp) {
-        res.status(200).json({
+        res.status(200).json([{
             msg: 'Item already Exist'
-        });
+        }]);
     } else {
         const response = await AddItemModel.create(addItemData);
-        res.status(200).json({
+        res.status(200).json([{
             msg: 'Item Added',
             response: response,
-        });
+        }]);
     }
 }
 
