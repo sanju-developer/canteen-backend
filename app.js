@@ -20,13 +20,13 @@ if (process.env.MONGODB_URI) {
 }
 
 //CORS
-app.use(function(req, res, next) {
-    res.header("access-control-allow-methods", "GET, POST, PUT, OPTIONS");
-    res.header("Content-Type", "application/json");
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-  });
+// app.use(function(req, res, next) {
+//     res.header("access-control-allow-methods", "GET, POST, PUT, OPTIONS");
+//     res.header("Content-Type", "application/json");
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//       next();
+// });
 
 // bodyparser middleware
 // to parse incoming data in JSON format
