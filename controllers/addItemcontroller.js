@@ -32,19 +32,19 @@ const deleteItem = async (req, res) => {
     if (itemExist) {
         const response = await AddItemModel.remove({ "_id": ObjectId(req.body.uniqueid) })
         if (response) {
-            res.status(200).json({
+            res.status(200).json([{
                 msg: 'Item Deleted',
                 response: response,
-            });
+            }]);
         } else {
-            res.status(500).json({
+            res.status(500).json([{
                 msg: 'Internal server error'
-            });
+            }]);
         }
     } else {
-        res.status(200).json({
+        res.status(200).json([{
             msg: 'Item does not exist'
-        });
+        }]);
     }
 }
 
