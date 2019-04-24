@@ -99,4 +99,4 @@ const getAllItem = async (req,res) => {
     }
 }
 
-module.exports = { AddItem, deleteItem, getAllItem }
+module.exports = { AddItem, deleteItem, updateItem, getAllItem }
