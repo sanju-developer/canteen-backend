@@ -55,8 +55,16 @@ const updateItem = async (req, res) => {
     if (itemPresent) {
         // const response = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
         if(req.body.itemname){
-            const response1 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
-            overAllResponse.push(response1);
+            let resp = await AddItemModel.findOne({ itemname: req.body.itemname });
+            if (resp) {
+                res.status(200).json([{
+                    msg: "Can't Update Item already Exist."
+                }]);
+            } else {
+                const response1 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
+                overAllResponse.push(response1);
+            }
+            
         }
         if(req.body.qty){
             const response2 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { qty: req.body.qty } });
