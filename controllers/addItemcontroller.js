@@ -49,40 +49,40 @@ const deleteItem = async (req, res) => {
 }
 
 const updateItem = async (req, res) => {
-    // const overAllResponse = [];
-    // const itemPresent = await AddItemModel.findOne({ _id: req.body.uniqueid });
+    const overAllResponse = [];
+    const itemPresent = await AddItemModel.findOne({ _id: req.body.uniqueid });
 
-    // if (itemPresent) {
-    //     // const response = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
-    //     if(req.body.itemname){
-    //         const response1 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
-    //         overAllResponse.push(response1);
-    //     }
-    //     if(req.body.qty){
-    //         const response2 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { qty: req.body.qty } });
-    //         overAllResponse.push(response2);
-    //     }
-    //     if(req.body.full){
-    //         const response3 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { full: req.body.full } });
-    //         overAllResponse.push(response3);
-    //     } 
-    //     if(req.body.half){
-    //         const response3 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { half: req.body.half } });
-    //         overAllResponse.push(response3);
-    //     } 
-    //     if(req.body.status){
-    //         const response4 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { status: req.body.status } });
-    //         overAllResponse.push(response4);
-    //     }
-    //     res.status(200).json({
-    //         msg: 'Updated Successfully',
-    //         resp: overAllResponse
-    //     })
-    // } else {
-    //     res.status(404).json({
-    //         msg: 'Item Not Found'
-    //     })
-    // }
+    if (itemPresent) {
+        // const response = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
+        if(req.body.itemname){
+            const response1 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
+            overAllResponse.push(response1);
+        }
+        if(req.body.qty){
+            const response2 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { qty: req.body.qty } });
+            overAllResponse.push(response2);
+        }
+        if(req.body.full){
+            const response3 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { full: req.body.full } });
+            overAllResponse.push(response3);
+        } 
+        if(req.body.half){
+            const response3 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { half: req.body.half } });
+            overAllResponse.push(response3);
+        } 
+        if(req.body.status){
+            const response4 = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { status: req.body.status } });
+            overAllResponse.push(response4);
+        }
+        res.status(200).json({
+            msg: 'Updated Successfully',
+            resp: overAllResponse
+        })
+    } else {
+        res.status(404).json({
+            msg: 'Item Not Found'
+        })
+    }
 }
 
 const getAllItem = async (req,res) => {
