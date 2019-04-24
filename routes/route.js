@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const AddItemController = require('../controllers/addItemcontroller');
 const OrderItemController = require('../controllers/orderItemcontroller');
+const UserController = require('../controllers/usercontroller');
 
 router.post('/addItem', AddItemController.AddItem);
 
@@ -15,5 +16,8 @@ router.post('/orderItem', OrderItemController.orderItem);
 
 router.post('/cancelOrderItem', OrderItemController.cancelOrderItem);
 
+router.post('/addUser',UserController.addUser);
+
+router.post('/removeUser', UserController.removeUser);
 
 module.exports = router;
