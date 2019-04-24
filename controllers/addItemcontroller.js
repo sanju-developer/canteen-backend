@@ -89,13 +89,13 @@ const getAllItem = async (req,res) => {
     const allItem = await AddItemModel.find();
 
     if(allItem){
-        res.status(200).json({
+        res.status(200).json([{
             response: allItem
-        })
+        }])
     } else {
-        res.status(404).json({
+        res.status(404).json([{
             msg: 'Item Not Found'
-        })
+        }])
     }
 }
 
