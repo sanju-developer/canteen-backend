@@ -56,7 +56,7 @@ const updateItem = async (req, res) => {
         const response = await AddItemModel.updateOne({ _id: req.body.uniqueid }, { $set: { itemname: req.body.itemname } });
         if(req.body.itemname){
             let resp = await AddItemModel.findOne({ itemname: req.body.itemname });
-            if (resp._id !== req.body.uniqueid) {
+            if (resp && resp._id !== req.body.uniqueid) {
                 res.status(200).json([{
                     msg: "Can't Update Item already Exist."
                 }]);
