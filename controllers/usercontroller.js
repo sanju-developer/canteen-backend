@@ -55,13 +55,13 @@ const removeUser = async  (req, res) => {
 }
 
 const loginUser = async (req,res) => {
-    const IsRollNoExist = await UserModel.findOne({ rollno: req.body.rollno })
+    const response = await UserModel.findOne({ rollno: req.body.rollno })
 
-    if(IsRollNoExist){
-        if(req.body.password == IsRollNoExist.password){
+    if(response){
+        if(req.body.password == response.password){
             res.status(200).json([{
                 msg: 'Logged In Successfully',
-                response: IsRollNoExist
+                response: response
             }]);
         } else {
             res.status(401).json([{
