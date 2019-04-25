@@ -55,23 +55,23 @@ const removeUser = async  (req, res) => {
 }
 
 const loginUser = async (req,res) => {
-    const IsRollNoExist = await UserModel.findOne({ rollno: req.body.rollno })
+    const response = await UserModel.findOne({ rollno: req.body.rollno })
 
-    if(IsRollNoExist){
-        if(req.body.password == IsRollNoExist.password){
-            res.status(200).json({
+    if(response){
+        if(req.body.password == response.password){
+            res.status(200).json([{
                 msg: 'Logged In Successfully',
                 response: response
-            });
+            }]);
         } else {
-            res.status(401).json({
-                msg: 'Unauthorized User',
-            });
+            res.status(401).json([{
+                msg: 'Wrong Password',
+            }]);
         }
     } else {
-        res.status(404).json({
-            msg: 'You Are Not Registerd Yet',
-        });
+        res.status(404).json([{
+            msg: 'User not Exist',
+        }]);
     }
 }
 
