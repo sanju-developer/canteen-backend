@@ -59,19 +59,19 @@ const loginUser = async (req,res) => {
 
     if(IsRollNoExist){
         if(req.body.password == IsRollNoExist.password){
-            res.status(200).json({
+            res.status(200).json([{
                 msg: 'Logged In Successfully',
-                response: response
-            });
+                response: IsRollNoExist
+            }]);
         } else {
-            res.status(401).json({
+            res.status(401).json([{
                 msg: 'Unauthorized User',
-            });
+            }]);
         }
     } else {
-        res.status(404).json({
+        res.status(404).json([{
             msg: 'You Are Not Registerd Yet',
-        });
+        }]);
     }
 }
 
