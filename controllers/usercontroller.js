@@ -65,12 +65,12 @@ const loginUser = async (req,res) => {
             }]);
         } else {
             res.status(401).json([{
-                msg: 'Unauthorized User',
+                msg: 'Wrong Password',
             }]);
         }
     } else {
         res.status(404).json([{
-            msg: 'You Are Not Registerd Yet',
+            msg: 'User not Exist',
         }]);
     }
 }
