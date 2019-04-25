@@ -1,19 +1,16 @@
 const OrderItemModel = require('../models/orderItemmodel');
+const UserModel = require('../models/usermodel');
 const ObjectId = require('mongodb').ObjectID;
 
 
 const orderItem = async (req,res) => {
-    const orderItemData = {
-        itemname: req.body.itemname,
-        qty: req.body.qty,
-        full: req.body.full,
-        half: req.body.half,
-    }
-    // Add Order
-    let response = await OrderItemModel.create(orderItemData);
+
+    let user_info = await UserModel.findOne({ "_id" : req.body[0].user_id })
+
+    let response = await OrderItemModel.create(req.body);
     if(response) {
         res.status(200).json({
-            msg: 'Order Added Successfully',
+            msg: `${user_info.name} Your Order Added Successfully`,
             response: response,
         });
     } else {
